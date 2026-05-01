@@ -33,10 +33,6 @@ button {
   border: none;
   font-weight: bold;
 }
-
-button:hover {
-  background: #333;
-}
 ```
 
   </style>
@@ -87,8 +83,8 @@ button:hover {
 
   <script>
 
-    // 🔗 PASTE YOUR SCRIPT URL HERE
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwxq97hDZS1viLkSYwxWyke6nfXbI9XLHEHuVMstOpnEcyVeSabkS7q6n-T_5O6FDrcPw/exec";
+    // 🔥 PUT YOUR SCRIPT URL HERE
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxqDUNC8ZJrFs4g6DR9KMR3W0Cid-VQKxfx0fFiAnCv9_KNDK7lV6pa4BR-DiQ3NOujxQ/exec";
 
     const categories = {
       Household: [
@@ -118,7 +114,7 @@ button:hover {
     categoryTypeSelect.addEventListener("change", loadCategories);
     loadCategories();
 
-    // 📅 Default date = today
+    // Default today's date
     document.getElementById("date").valueAsDate = new Date();
 
     document.getElementById("form").addEventListener("submit", e => {
@@ -136,6 +132,7 @@ button:hover {
 
       fetch(scriptURL, {
         method: "POST",
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json"
         },
@@ -147,11 +144,10 @@ button:hover {
         document.getElementById("date").valueAsDate = new Date();
         loadCategories();
       })
-      .catch(err => alert("Error: " + err));
+      .catch(() => alert("Error"));
     });
 
   </script>
 
 </body>
 </html>
-                      
